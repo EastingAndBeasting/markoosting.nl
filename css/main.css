@@ -1,0 +1,339 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Noto+Serif:400,700");
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
+.fade-in {
+  opacity: 0; }
+
+.loading-main .fade-in {
+  animation: fade-in 1000ms cubic-bezier(0.5, 0.5, 0.5, 1) forwards; }
+
+.loading-main .fade-in-center {
+  animation: fade-in-center 1000ms cubic-bezier(0.5, 0.5, 0.5, 1) forwards; }
+
+.fade-in:nth-child(1) {
+  animation-delay: 2120ms; }
+
+.fade-in:nth-child(2) {
+  animation-delay: 2240ms; }
+
+.fade-in:nth-child(3) {
+  animation-delay: 2360ms; }
+
+.fade-in:nth-child(4) {
+  animation-delay: 2480ms; }
+
+.fade-in:nth-child(5) {
+  animation-delay: 2600ms; }
+
+.fade-in:nth-child(6) {
+  animation-delay: 2720ms; }
+
+.fade-in:nth-child(7) {
+  animation-delay: 2840ms; }
+
+.fade-in:nth-child(8) {
+  animation-delay: 2960ms; }
+
+.fade-in:nth-child(9) {
+  animation-delay: 3080ms; }
+
+.fade-in:nth-child(10) {
+  animation-delay: 3200ms; }
+
+@keyframes fade-in {
+  0% {
+    transform: translateY(10px);
+    opacity: 0; }
+  100% {
+    transform: translateY(0);
+    opacity: 1; } }
+
+@keyframes fade-in-center {
+  0% {
+    transform: translate(-50%, -40%);
+    opacity: 0; }
+  100% {
+    transform: translate(-50%, -50%);
+    opacity: 1; } }
+
+#pageload {
+  position: fixed;
+  z-index: 980;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white; }
+  #pageload .center {
+    animation: fade-in-center 1000ms cubic-bezier(0.5, 0.5, 0.5, 1) forwards; }
+  #pageload .logo {
+    white-space: nowrap;
+    transition: opacity 20ms ease; }
+    #pageload .logo::after {
+      width: 100%;
+      animation: pageload-logo-after 650ms cubic-bezier(0.2, 0.9, 0.25, 1) forwards;
+      animation-delay: 700ms; }
+  #pageload.loading-done {
+    animation: pageload-hide 10ms linear forwards;
+    animation-delay: 2200ms; }
+    #pageload.loading-done #revealer {
+      visibility: visible !important; }
+      #pageload.loading-done #revealer .revealer__layer {
+        animation: swoosh 1500ms cubic-bezier(0.7, 0, 0.3, 1) forwards;
+        animation-delay: 1300ms; }
+  #pageload #revealer {
+    pointer-events: none;
+    visibility: hidden;
+    position: fixed;
+    z-index: 1000;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh; }
+    #pageload #revealer .revealer__layer {
+      position: absolute;
+      width: 300%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: #222; }
+      #pageload #revealer .revealer__layer:nth-child(2) {
+        background: white;
+        animation-delay: 1400ms; }
+      #pageload #revealer .revealer__layer:nth-child(3) {
+        background: #500FEF;
+        animation-delay: 1500ms; }
+
+@keyframes pageload-logo-after {
+  0% {
+    width: 100%; }
+  100% {
+    width: 0.5em; } }
+
+@keyframes swoosh {
+  0% {
+    transform: translate3d(0, 0, 0); }
+  100% {
+    transform: translate3d(0, -200%, 0);
+    visibility: hidden; } }
+
+@keyframes pageload-hide {
+  0% {
+    background: white;
+    visibility: visible; }
+  100% {
+    background: transparent;
+    visibility: hidden; } }
+
+.cube-loader {
+  display: block;
+  margin: 2em auto 1em auto;
+  width: 1.7em;
+  height: 1.7em;
+  position: relative;
+  border: 0.3em solid #222;
+  animation: cube-loader 2s infinite ease; }
+
+.cube-loader-inner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: #222;
+  animation: cube-loader-inner 2s infinite ease-in; }
+
+@keyframes cube-loader {
+  0% {
+    transform: rotate(0deg); }
+  25% {
+    transform: rotate(180deg); }
+  50% {
+    transform: rotate(180deg); }
+  75% {
+    transform: rotate(360deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+@keyframes cube-loader-inner {
+  0% {
+    height: 0%; }
+  25% {
+    height: 0%; }
+  49% {
+    height: 101%; }
+  75% {
+    height: 101%; }
+  100% {
+    height: 0%; } }
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, input, button, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 0.6em;
+  text-transform: uppercase;
+  color: #3a3a3a;
+  letter-spacing: 0.12em; }
+
+h1 {
+  font-size: 1.6em; }
+
+h2 {
+  font-size: 1.3em; }
+
+h3 {
+  font-size: 1em; }
+
+p {
+  line-height: 180%;
+  margin-bottom: 1em;
+  color: #666; }
+
+img {
+  width: 100%;
+  vertical-align: middle; }
+
+blockquote {
+  padding: 0.3em 1.5em 0.6em 1.5em;
+  margin: 1em 0;
+  font-size: 1.2em;
+  font-style: italic;
+  color: #666;
+  border-left: 0.2em solid #ddd; }
+  blockquote span {
+    display: block;
+    margin-top: 0.5em;
+    font-size: 0.9em;
+    color: #aaa; }
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
+header {
+  padding: 1em;
+  padding-left: 0; }
+
+.logo {
+  display: inline-block;
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #3a3a3a;
+  font-size: 1.6em;
+  padding: 0.5em 1em;
+  letter-spacing: 0.12em; }
+  .logo::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    overflow: hidden;
+    white-space: nowrap;
+    right: 0;
+    top: 0;
+    width: 0.5em;
+    height: 100%;
+    color: white;
+    background: #500FEF; }
+
+.text-box {
+  max-width: 40em;
+  margin: auto;
+  padding: 1em; }
+  @media screen and (max-width: 640px) {
+    .text-box {
+      padding: 2em; } }
+
+.btn {
+  cursor: pointer;
+  display: inline-block;
+  margin: 1em 1em 1em 0;
+  padding: 1em 2.5em;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  font-style: normal;
+  font-family: 'Montserrat', sans-serif;
+  color: grey;
+  border-radius: 4em;
+  border: 0.22em solid grey;
+  transition: background 120ms ease-in-out, color 120ms ease-in-out; }
+  .btn:hover {
+    background: grey;
+    color: white; }
+
+.btn-arrow {
+  padding-right: 2em; }
+  .btn-arrow::after {
+    content: "\f0da";
+    padding-left: 1em;
+    font-family: FontAwesome; }
+
+.btn-white {
+  color: white;
+  border: 0.22em solid white; }
+  .btn-white:hover {
+    color: black;
+    background: white;
+    text-shadow: none; }
+
+.btn-primary {
+  color: #500FEF;
+  border: 0.22em solid #500FEF; }
+  .btn-primary:hover {
+    background: #500FEF; }
+
+.btn-secondary {
+  color: #3E67EC;
+  border: 0.22em solid #3E67EC; }
+  .btn-secondary:hover {
+    background: #3E67EC; }
+
+.article-main {
+  font-family: 'Noto Serif', sans-serif; }
+  .article-main h1, .article-main h2, .article-main h3, .article-main h4, .article-main h5, .article-main h6 {
+    margin-top: 2em; }
+
+.card {
+  margin: 2em 0;
+  background: #fafafa;
+  border: 1px solid #eee; }
+  @media screen and (min-width: 480px) {
+    .card .card-thumb {
+      margin-bottom: -1em; } }
+  .card .card-content {
+    padding: 3em; }
+    @media screen and (max-width: 480px) {
+      .card .card-content {
+        padding: 1.5em; } }
+    .card .card-content .title, .card .card-content .text {
+      text-align: center; }
+    .card .card-content .category, .card .card-content .date {
+      color: #aaa;
+      font-size: 0.9em;
+      margin-bottom: 1em;
+      text-align: center; }
+    .card .card-content .date {
+      margin-top: 1em; }
+    .card .card-content p {
+      margin-bottom: 0; }
+
+.card-small {
+  max-width: 22em;
+  margin: 3em auto; }
+
+/*# sourceMappingURL=main.css.map */
