@@ -12,8 +12,10 @@ $indigo: #500FEF
 $accent: $indigo
 
 $transition: all 200ms cubic-bezier(.15,.26,.04,1)
+$transition_elastic: all 350ms cubic-bezier(0.4, 1.6, 0.15, 0.9)
 
 @import 'animations'
+@import 'portfolio'
 // @import 'inputs'
 
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, input, button, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video
@@ -27,7 +29,8 @@ html, body
   overflow: auto
   -webkit-overflow-scrolling: touch
   font-family: 'Roboto', Arial, Helvetica, sans-serif
-
+body
+  min-height: 100vh
 h1, h2, h3, h4, h5, h6
   font-family: 'Montserrat', sans-serif
   margin-bottom: 0.6em
@@ -59,11 +62,20 @@ blockquote
     margin-top: 0.5em
     font-size: 0.9em
     color: #aaa
+.metatext
+  font-size: 0.9em
+  color: #bbb
+.text-center
+  text-align: center
 .center
   position: absolute
   top: 50%
   left: 50%
   transform: translate(-50%,-50%)
+.flex
+  display: flex
+.flex-space-around
+  justify-content: space-around
 
 header
   padding: 1em
@@ -72,13 +84,14 @@ header
 .logo
   display: inline-block
   position: relative
+  font-size: 1.6em
+  padding: 0.5em 1em
   font-family: 'Montserrat', sans-serif
   font-weight: bold
   text-transform: uppercase
-  color: #3a3a3a
-  font-size: 1.6em
-  padding: 0.5em 1em
   letter-spacing: 0.12em
+  white-space: nowrap
+  color: #3a3a3a
   &::after
     content: ""
     display: inline-block
@@ -92,12 +105,18 @@ header
     color: white
     background: $accent
 
-.text-box
-  @media screen and (max-width: 640px)
-    padding: 2em
-  max-width: 40em
-  margin: auto
-  padding: 1em
+.big-number
+  font-size: 3em
+  font-weight: bold
+  font-family: 'Montserrat', sans-serif
+  color: #ddd
+  padding-bottom: 0.15em
+  max-width: 2em
+  border-bottom: 0.15em solid #ddd
+  h2
+    color: inherit
+    margin: 0 !important
+    letter-spacing: normal
 
 .btn
   cursor: pointer
@@ -140,6 +159,46 @@ header
   &:hover
     background: $blue
 
+// .bouncybutton
+//   cursor: pointer
+//   position: relative
+//   display: inline-block
+//   text-align: center
+//   width: 2.2em
+//   height: 2.2em
+//   color: $accent
+//   font-size: 1.5em
+//   line-height: 2.2em
+//   transition: $transition_elastic
+//   &:hover, &:active
+//     color: white
+//     outline: none
+//     &::after
+//       opacity: 1
+//       transform: translate(-50%,-50%) scale(1,1)
+//   &:focus
+//     outline: none
+//   &::after
+//     content: ""
+//     display: inline-block
+//     position: absolute
+//     z-index: -1
+//     width: 100%
+//     height: 100%
+//     left: 50%
+//     top: 50%
+//     border-radius: 50%
+//     background: $accent
+//     opacity: 0
+//     transform: translate(-50%,-50%) scale(0,0)
+//     transition: $transition_elastic
+
+.text-box
+  @media screen and (max-width: 640px)
+    padding: 2em
+  max-width: 40em
+  margin: auto
+  padding: 1em
 
 .article-main
   font-family: 'Noto Serif', sans-serif

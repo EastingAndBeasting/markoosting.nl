@@ -1,0 +1,14 @@
+{
+  "projects": [
+    {
+      "title": "Project 1",
+      "url": "project1.html",
+      "thumb": "img/portfolio/img-thumb.jpg"
+    },
+    {
+      "title": "Project 2",
+      "url": "project2.html",
+      "thumb": "img/portfolio/img-thumb.jpg"
+    }
+  ]
+}

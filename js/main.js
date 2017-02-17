@@ -1,14 +1,16 @@
 window.onload = function () {
+  var loadbtn = document.getElementById("loadbtn");
+  var loadstate = false;
+
   setTimeout(function() {
-    loadPage();
-  }, 1000);
+    hideLoadingScreen();
+  }, 1500);
 }
 
-function loadPage() {
-  // Get the pageload wrapper + revealer effect and main content
-  var pageload = document.getElementById("pageload");
+function animationHandler() {
+  // Get the loadingscreen wrapper + revealer effect and main content
+  var loadingscreen = document.getElementById("loadingscreen");
   var revealer = document.getElementById("revealer");
-  var main = document.getElementById("main");
 
   // Get the window size and calculate the diagonal
   var widthVal, heightVal, pageDiagonal;
@@ -21,8 +23,17 @@ function loadPage() {
   revealer.style.width = widthVal;
   revealer.style.height = heightVal;
   revealer.style.transform = transform;
+}
 
-  // Trigger animations by adding class names
-  pageload.className += "loading-done";
-  main.className += "loading-main";
+function showLoadingScreen() {
+  loadingscreen.classList.remove("loading-done");
+  loadingscreen.classList.add("loading");
+  main.classList.remove("loading-done");
+}
+
+function hideLoadingScreen() {
+  animationHandler();
+  loadingscreen.classList.remove("loading");
+  loadingscreen.classList.add("loading-done");
+  main.classList.add("loading-done");
 }

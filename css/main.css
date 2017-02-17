@@ -5,41 +5,41 @@
 .fade-in {
   opacity: 0; }
 
-.loading-main .fade-in {
+.loading-done .fade-in {
   animation: fade-in 1000ms cubic-bezier(0.5, 0.5, 0.5, 1) forwards; }
 
-.loading-main .fade-in-center {
+.loading-done .fade-in-center {
   animation: fade-in-center 1000ms cubic-bezier(0.5, 0.5, 0.5, 1) forwards; }
 
 .fade-in:nth-child(1) {
-  animation-delay: 2120ms; }
+  animation-delay: 1120ms; }
 
 .fade-in:nth-child(2) {
-  animation-delay: 2240ms; }
+  animation-delay: 1240ms; }
 
 .fade-in:nth-child(3) {
-  animation-delay: 2360ms; }
+  animation-delay: 1360ms; }
 
 .fade-in:nth-child(4) {
-  animation-delay: 2480ms; }
+  animation-delay: 1480ms; }
 
 .fade-in:nth-child(5) {
-  animation-delay: 2600ms; }
+  animation-delay: 1600ms; }
 
 .fade-in:nth-child(6) {
-  animation-delay: 2720ms; }
+  animation-delay: 1720ms; }
 
 .fade-in:nth-child(7) {
-  animation-delay: 2840ms; }
+  animation-delay: 1840ms; }
 
 .fade-in:nth-child(8) {
-  animation-delay: 2960ms; }
+  animation-delay: 1960ms; }
 
 .fade-in:nth-child(9) {
-  animation-delay: 3080ms; }
+  animation-delay: 2080ms; }
 
 .fade-in:nth-child(10) {
-  animation-delay: 3200ms; }
+  animation-delay: 2200ms; }
 
 @keyframes fade-in {
   0% {
@@ -57,53 +57,64 @@
     transform: translate(-50%, -50%);
     opacity: 1; } }
 
-#pageload {
+#loadingscreen {
   position: fixed;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   z-index: 980;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  background: white; }
-  #pageload .center {
+  height: 100%; }
+  #loadingscreen .bg {
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+    background: white;
+    transition: visibility 10ms; }
+  #loadingscreen.loading .bg {
+    visibility: visible; }
+  #loadingscreen.loading .center {
     animation: fade-in-center 1000ms cubic-bezier(0.5, 0.5, 0.5, 1) forwards; }
-  #pageload .logo {
-    white-space: nowrap;
-    transition: opacity 20ms ease; }
-    #pageload .logo::after {
-      width: 100%;
-      animation: pageload-logo-after 650ms cubic-bezier(0.2, 0.9, 0.25, 1) forwards;
-      animation-delay: 700ms; }
-  #pageload.loading-done {
-    animation: pageload-hide 10ms linear forwards;
-    animation-delay: 2200ms; }
-    #pageload.loading-done #revealer {
+  #loadingscreen.loading .logo::after {
+    width: 100%;
+    animation: pageload-logo-after 650ms cubic-bezier(0.2, 0.9, 0.25, 1) forwards;
+    animation-delay: 700ms; }
+  #loadingscreen.loading-done {
+    visibility: hidden; }
+    #loadingscreen.loading-done .bg {
+      transition-delay: 700ms; }
+    #loadingscreen.loading-done #revealer {
+      opacity: 1;
       visibility: visible !important; }
-      #pageload.loading-done #revealer .revealer__layer {
-        animation: swoosh 1500ms cubic-bezier(0.7, 0, 0.3, 1) forwards;
-        animation-delay: 1300ms; }
-  #pageload #revealer {
+      #loadingscreen.loading-done #revealer .revealer__layer {
+        animation: swoosh 1500ms cubic-bezier(0.7, 0, 0.3, 1) forwards; }
+  #loadingscreen #revealer {
     pointer-events: none;
+    opacity: 0;
     visibility: hidden;
     position: fixed;
     z-index: 1000;
     top: 50%;
     left: 50%;
-    width: 100vw;
-    height: 100vh; }
-    #pageload #revealer .revealer__layer {
+    width: 100%;
+    height: 100%; }
+    #loadingscreen #revealer .revealer__layer {
       position: absolute;
       width: 300%;
       height: 100%;
       top: 0;
       left: 0;
-      background: #222; }
-      #pageload #revealer .revealer__layer:nth-child(2) {
+      background: #222;
+      animation-delay: 0ms; }
+      #loadingscreen #revealer .revealer__layer:nth-child(2) {
         background: white;
-        animation-delay: 1400ms; }
-      #pageload #revealer .revealer__layer:nth-child(3) {
+        animation-delay: 100ms; }
+      #loadingscreen #revealer .revealer__layer:nth-child(3) {
         background: #500FEF;
-        animation-delay: 1500ms; }
+        animation-delay: 200ms; }
 
 @keyframes pageload-logo-after {
   0% {
@@ -115,15 +126,7 @@
   0% {
     transform: translate3d(0, 0, 0); }
   100% {
-    transform: translate3d(0, -200%, 0);
-    visibility: hidden; } }
-
-@keyframes pageload-hide {
-  0% {
-    background: white;
-    visibility: visible; }
-  100% {
-    background: transparent;
+    transform: translate3d(0, -205%, 0);
     visibility: hidden; } }
 
 .cube-loader {
@@ -134,13 +137,14 @@
   position: relative;
   border: 0.3em solid #222;
   animation: cube-loader 2s infinite ease; }
-
-.cube-loader-inner {
-  vertical-align: top;
-  display: inline-block;
-  width: 100%;
-  background-color: #222;
-  animation: cube-loader-inner 2s infinite ease-in; }
+  .cube-loader::after {
+    content: "";
+    display: inline-block;
+    vertical-align: top;
+    display: inline-block;
+    width: 100%;
+    background-color: #222;
+    animation: cube-loader-inner 2s infinite ease-in; }
 
 @keyframes cube-loader {
   0% {
@@ -155,18 +159,36 @@
     transform: rotate(360deg); } }
 
 @keyframes cube-loader-inner {
-  0% {
+  0%, 25% {
     height: 0%; }
-  25% {
-    height: 0%; }
-  49% {
+  49%, 75% {
     height: 101%; }
-  75% {
-    height: 101%; }
-  100% {
+  99% {
     height: 0%; } }
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, input, button, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+.portfolio-grid {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+  .portfolio-grid .item {
+    display: inline-block;
+    -ms-flex-positive: 1;
+        flex-grow: 1;
+    width: 33%;
+    height: 16em;
+    padding: 2em;
+    border: 1px solid #eee; }
+    @media screen and (max-width: 960px) {
+      .portfolio-grid .item {
+        width: 50%; } }
+    @media screen and (max-width: 540px) {
+      .portfolio-grid .item {
+        width: 100%; } }
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, input, button, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   box-sizing: border-box;
   margin: 0;
   padding: 0; }
@@ -178,6 +200,9 @@ html, body {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   font-family: 'Roboto', Arial, Helvetica, sans-serif; }
+
+body {
+  min-height: 100vh; }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Montserrat', sans-serif;
@@ -217,11 +242,26 @@ blockquote {
     font-size: 0.9em;
     color: #aaa; }
 
+.metatext {
+  font-size: 0.9em;
+  color: #bbb; }
+
+.text-center {
+  text-align: center; }
+
 .center {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%); }
+
+.flex {
+  display: -ms-flexbox;
+  display: flex; }
+
+.flex-space-around {
+  -ms-flex-pack: distribute;
+      justify-content: space-around; }
 
 header {
   padding: 1em;
@@ -230,13 +270,14 @@ header {
 .logo {
   display: inline-block;
   position: relative;
+  font-size: 1.6em;
+  padding: 0.5em 1em;
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   text-transform: uppercase;
-  color: #3a3a3a;
-  font-size: 1.6em;
-  padding: 0.5em 1em;
-  letter-spacing: 0.12em; }
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+  color: #3a3a3a; }
   .logo::after {
     content: "";
     display: inline-block;
@@ -250,13 +291,18 @@ header {
     color: white;
     background: #500FEF; }
 
-.text-box {
-  max-width: 40em;
-  margin: auto;
-  padding: 1em; }
-  @media screen and (max-width: 640px) {
-    .text-box {
-      padding: 2em; } }
+.big-number {
+  font-size: 3em;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  color: #ddd;
+  padding-bottom: 0.15em;
+  max-width: 2em;
+  border-bottom: 0.15em solid #ddd; }
+  .big-number h2 {
+    color: inherit;
+    margin: 0 !important;
+    letter-spacing: normal; }
 
 .btn {
   cursor: pointer;
@@ -302,6 +348,14 @@ header {
   border: 0.22em solid #3E67EC; }
   .btn-secondary:hover {
     background: #3E67EC; }
+
+.text-box {
+  max-width: 40em;
+  margin: auto;
+  padding: 1em; }
+  @media screen and (max-width: 640px) {
+    .text-box {
+      padding: 2em; } }
 
 .article-main {
   font-family: 'Noto Serif', sans-serif; }
